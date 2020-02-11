@@ -126,37 +126,9 @@ public class LabTest extends BaseCustomizableData<LabTestAttribute> implements j
 		this.filePath = filePath;
 	}
 
-	/**
-	 * Finds a list of LabTest objects from Lab reference number. Also @see
-	 * org.openmrs.Attributable#findPossibleValues(java.lang.String)
-	 * 
-	 * @param referenceNumber the reference number
-	 * @return {@link LabTest} object(s)
-	 */
-	@Override
-	public List<LabTest> findPossibleValues(String referenceNumber) {
-		try {
-			return Context.getService(CommonLabTestService.class).getLabTests(referenceNumber, false);
-		}
-		catch (Exception e) {
-			return Collections.emptyList();
-		}
-	}
-
 	@Override
 	public String getDisplayString() {
 		return new ToStringBuilder(toString()).append("reference", getLabReferenceNumber()).build();
-	}
-
-	/**
-	 * Always returns an empty list because returning complete list of all LabTests will be burdensome.
-	 * Also @see org.openmrs.Attributable#getPossibleValues()
-	 * 
-	 * @return {@link LabTest} object(s)
-	 */
-	@Override
-	public List<LabTest> getPossibleValues() {
-		return Collections.emptyList();
 	}
 
 	/**
